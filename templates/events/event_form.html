@@ -1,0 +1,7 @@
+<h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Event</h2>
+<p><a href="{% url 'event_list' %}">← Back to Events</a></p>
+<form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Save Event</button>
+</form>
+<a href="{% url 'event_list' %}">Cancel</a>

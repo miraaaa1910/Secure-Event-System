@@ -1,0 +1,39 @@
+<h1>Secure Event System</h1>
+
+{% if user.is_authenticated %}
+    <p>Welcome, <strong>{{ user.username }}</strong>!</p>
+    
+    <nav style="margin-bottom: 20px;">
+        <a href="{% url 'profile' %}" style="padding: 10px; background: #e0f7fa; text-decoration: none; border-radius: 5px; margin-right: 10px;">👤 My Profile</a>
+        <a href="{% url 'event_list' %}" style="padding: 10px; background: #eee; text-decoration: none; border-radius: 5px;">📅 My Events</a>
+        <a href="{% url 'event_create' %}" style="padding: 10px; background: #eee; text-decoration: none; border-radius: 5px;">➕ Register New Event</a>
+        
+        {% if user.is_staff %}
+        <div style="margin-top: 20px; padding: 15px; border: 2px solid #ffd700; border-radius: 10px; background-color: #fffdf0;">
+          <h3 style="margin-top: 0;">🛡️ Administrative Controls</h3>
+          <nav>
+            <a href="{% url 'audit_log' %}" style="padding: 10px; background: #eee; text-decoration: none; border-radius: 5px; margin-right: 10px;">📜 System Audit Logs</a>
+            
+            <a href="/admin/auth/user/" style="padding: 10px; background: #eee; text-decoration: none; border-radius: 5px; margin-right: 10px;">👥 Manage Users (Add/Remove)</a>
+            
+            <a href="/admin/" style="padding: 10px; background: #eee; text-decoration: none; border-radius: 5px;">🏗️ Full Database Admin</a>
+          </nav>
+        </div>   
+        {% endif %}
+    </nav>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+{% else %}
+<div class="auth-container py-6 text-center">
+    <p class="text-gray-600 mb-4">You are not logged in.</p>
+    <div class="flex gap-4 justify-center">
+      <a href="{% url 'login' %}" class="btn-primary">Log In</a>
+      <span class="text-gray-300">or</span>
+      <a href="{% url 'signup' %}" class="btn-secondary">Create Account</a>
+    </div>
+  </div>
+{% endif %}

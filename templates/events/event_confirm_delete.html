@@ -1,0 +1,7 @@
+<h2>Are you sure you want to delete "{{ event.title }}"?</h2>
+<p><a href="{% url 'event_list' %}">← Back to Events</a></p>
+<form method="post">
+    {% csrf_token %} <p>This action cannot be undone.</p>
+    <button type="submit" style="background-color: red; color: white;">Confirm Delete</button>
+    <a href="{% url 'event_list' %}">Cancel</a>
+</form>

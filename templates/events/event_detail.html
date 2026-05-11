@@ -1,0 +1,13 @@
+<h2>{{ event.title }}</h2>
+<p><strong>Date:</strong> {{ event.date }}</p>
+<p><strong>Location:</strong> {{ event.location }}</p>
+<div style="margin-top: 16px; padding: 16px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa;">
+    <h3>Description</h3>
+    <p style="white-space: pre-line;">{{ event.description }}</p>
+</div>
+
+<div style="margin-top: 24px; display: flex; gap: 12px; align-items: center;">
+    <a href="{% url 'event_update' event.pk %}" style="padding: 10px 16px; border-radius: 6px; border: 1px solid #007bff; color: #007bff; text-decoration: none;">Edit Event</a>
+    <a href="{% url 'event_delete' event.pk %}" style="padding: 10px 16px; border-radius: 6px; border: 1px solid #dc3545; color: #dc3545; text-decoration: none;">Delete Event</a>
+    <a href="{% url 'event_list' %}" style="padding: 10px 16px; border-radius: 6px; border: 1px solid #999; color: #333; text-decoration: none;">Back to Events</a>
+</div>

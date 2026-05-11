@@ -1,0 +1,20 @@
+<h2>My Registered Events</h2>
+<p><a href="{% url 'home' %}">← Back to Dashboard</a></p>
+<div style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+    {% for event in events %}
+        <div style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; background: #fff;">
+            <div>
+                <strong style="font-size: 1.05rem;"><a href="{% url 'event_detail' event.pk %}" style="color: #000; text-decoration: none;">{{ event.title }}</a></strong><br>
+                <span style="color: #555;">{{ event.date }} at {{ event.location }}</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <a href="{% url 'event_update' event.pk %}" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #007bff; color: #007bff; text-decoration: none;">Edit</a>
+                <a href="{% url 'event_delete' event.pk %}" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #dc3545; color: #dc3545; text-decoration: none;">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <div style="padding: 20px; border: 1px dashed #bbb; border-radius: 12px; background: #fafafa; color: #555;">
+            No events registered yet.
+        </div>
+    {% endfor %}
+</div>
