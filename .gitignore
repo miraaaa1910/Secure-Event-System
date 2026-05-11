@@ -1,0 +1,22 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Environment files
+.env
+.env.*
+
+# Django database file
+db.sqlite3
+
+# Media uploads
+media/
+
+# Editor/OS files
+*.swp
+*~
+.DS_Store
+Thumbs.db
